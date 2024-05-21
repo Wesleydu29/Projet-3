@@ -1,0 +1,17 @@
+function genererProjets() {
+    for( let i = 0; i < projets.length; i++) {
+        const article = projets[0];
+        const imageProjet = document.createElement("img");
+        imageProjet.src = article.image;
+        const nomProjet = document.createElement("p");
+        nomProjet.innerText = article.nom;
+        const categorieProjet = document.createElement("p");
+        categorieProjet.innerText = article.categorie
+    
+        const sectionGallery = document.querySelector(".gallery");
+    
+        sectionGallery.appendChild(imageProjet);
+        sectionGallery.appendChild(nomProjet);
+        sectionGallery.appendChild(categorieProjet);
+    }
+}
