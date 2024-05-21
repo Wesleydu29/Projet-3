@@ -1,10 +1,10 @@
 function genererProjets() {
     for( let i = 0; i < projets.length; i++) {
-        const article = projets[0];
+        const projet = projets[i];
         const imageProjet = document.createElement("img");
-        imageProjet.src = article.image;
+        imageProjet.src = projet.image;
         const nomProjet = document.createElement("p");
-        nomProjet.innerText = article.nom;
+        nomProjet.innerText = projet.nom;
         const categorieProjet = document.createElement("p");
         categorieProjet.innerText = article.categorie
     

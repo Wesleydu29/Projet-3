@@ -1,48 +1,85 @@
-const reponse = fetch("http://localhost:5678/api/works").then((reponse) => {
+fetch("http://localhost:5678/api/works").then((reponse) => {
     return reponse.json();
 }).then((json) => {
-    console.log(json)
+    projets = json
+    genererProjets()
+});
+
+fetch("http://localhost:5678/api/categories").then((reponse) => {
+    return reponse.json();
+}).then((json) => {
+    categories = json
+    genererBoutonsCategories()
 });
 
 projets = []
+categories = []
 
-const sectionCategories = document.querySelector(".categories");
+function genererBoutonsCategories() {
 
-const boutonTous = document.createElement("Button");
-boutonTous.classList.add("btn-tous");
-boutonTous.innerText = "Tous"
-const boutonObjets = document.createElement("Button");
-boutonObjets.classList.add("btn-objets");
-boutonObjets.innerText= "Objets"
-const boutonAppartements = document.createElement("Button");
-boutonAppartements.classList.add("btn-appartements");
-boutonAppartements.innerText= "Appartements"
-const boutonHotels = document.createElement("Button");
-boutonHotels.classList.add("btn-hotels");
-boutonHotels.innerText= "Hotels & restaurants"
+    const sectionCategories = document.querySelector(".categories");
+    const boutonTous = document.createElement("Button");
+    boutonTous.classList.add("btn-tous");
+    boutonTous.innerText = "Tous"
 
-sectionCategories.appendChild(boutonTous);
-sectionCategories.appendChild(boutonObjets);
-sectionCategories.appendChild(boutonAppartements);
-sectionCategories.appendChild(boutonHotels);
+    sectionCategories.appendChild(boutonTous);
+    
+    for(let i = 0; i < categories.length; i++) {
+        const categorie = categories[i]
+        const boutonsfiltres = document.createElement("button")
+        boutonsfiltres.innerText = categorie.name.value
+        console.log(categorie)
+        
 
-const boutonFiltreObjets = document.querySelector(".btn-objets")
-boutonFiltreObjets.addEventListener("click", () => {
-    const projetsFiltres = projets.filter(function (projet) {
-        return projet.objets
-    })
-})
+        sectionCategories.appendChild(boutonsfiltres)
+    }
 
-const boutonFiltreAppartements = document.querySelector(".btn-appartements")
-boutonFiltreAppartements.addEventListener("click", () => {
-    const projetsFiltres = projets.filter(function (projet) {
-        return projet.appartements
-    })
-})
+    
 
-const boutonFiltreHotels = document.querySelector(".btn-hotels")
-boutonFiltreHotels.addEventListener("click", () => {
-    const projetsFiltres = projets.filter(function (projet) {
-        return projet.Hotels
-    })
-})
+}
+
+
+function genererProjets() {
+    for( let i = 0; i < projets.length; i++) {
+        const projet = projets[i];
+        const baliseFigure = document.createElement("figure");
+        const baliseFigcaption = document.createElement("figcaption");
+
+        const imageProjet = document.createElement("img");
+        imageProjet.src = projet.imageUrl;
+        const nomProjet = document.createElement("p");
+        nomProjet.innerText = projet.title;
+        const categorieProjet = document.createElement("p");
+        categorieProjet.innerText = projet.category
+    
+        const sectionGallery = document.querySelector(".gallery");
+    
+        baliseFigure.appendChild(imageProjet);
+        baliseFigure.appendChild(nomProjet);
+        sectionGallery.appendChild(baliseFigure);
+    }
+}
+
+
+//const boutonFiltreObjets = document.querySelector(".btn-objets")
+//boutonFiltreObjets.addEventListener("click", () => {
+    //const projetsFiltres = projets.filter(function (projet) {
+        //return projet.objets
+    //})
+    //document.querySelector(".gallery").innerHTML=""
+    //genererProjets(projet)
+//})
+
+//const boutonFiltreAppartements = document.querySelector(".btn-appartements")
+//boutonFiltreAppartements.addEventListener("click", () => {
+    //const projetsFiltres = projets.filter(function (projet) {
+        //return projet.appartements
+    //})
+//})
+
+//const boutonFiltreHotels = document.querySelector(".btn-hotels")
+//boutonFiltreHotels.addEventListener("click", () => {
+    //const projetsFiltres = projets.filter(function (projet) {
+        //return projet.Hotels
+    //})
+//})
