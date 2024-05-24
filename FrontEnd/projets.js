@@ -1,3 +1,5 @@
+import { genererBoutonsCategories } from "./categories";
+
 fetch("http://localhost:5678/api/works").then((reponse) => {
     return reponse.json();
 }).then((json) => {
@@ -5,41 +7,14 @@ fetch("http://localhost:5678/api/works").then((reponse) => {
     genererProjets()
 });
 
-fetch("http://localhost:5678/api/categories").then((reponse) => {
-    return reponse.json();
-}).then((json) => {
-    categories = json
-    genererBoutonsCategories()
-});
+
 
 projets = []
-categories = []
-
-function genererBoutonsCategories() {
-
-    const sectionCategories = document.querySelector(".categories");
-    const boutonTous = document.createElement("Button");
-    boutonTous.classList.add("btn-tous");
-    boutonTous.innerText = "Tous"
-
-    sectionCategories.appendChild(boutonTous);
-    
-    for(let i = 0; i < categories.length; i++) {
-        const categorie = categories[i]
-        const boutonsfiltres = document.createElement("button")
-        boutonsfiltres.innerText = categorie.name.value
-        console.log(categorie)
-        
-
-        sectionCategories.appendChild(boutonsfiltres)
-    }
-
-    
-
-}
 
 
 function genererProjets() {
+    const projetsFiltres = 0
+    
     for( let i = 0; i < projets.length; i++) {
         const projet = projets[i];
         const baliseFigure = document.createElement("figure");
@@ -58,17 +33,18 @@ function genererProjets() {
         baliseFigure.appendChild(nomProjet);
         sectionGallery.appendChild(baliseFigure);
     }
+
+    const boutonFiltreTous = document.querySelector(".btn-tous")
+    boutonFiltreTous.addEventListener("click", () => {
+    projetsFiltres = projets.filter(function (projet) {
+        return projet
+    
+})
+})
 }
 
 
-//const boutonFiltreObjets = document.querySelector(".btn-objets")
-//boutonFiltreObjets.addEventListener("click", () => {
-    //const projetsFiltres = projets.filter(function (projet) {
-        //return projet.objets
-    //})
-    //document.querySelector(".gallery").innerHTML=""
-    //genererProjets(projet)
-//})
+
 
 //const boutonFiltreAppartements = document.querySelector(".btn-appartements")
 //boutonFiltreAppartements.addEventListener("click", () => {
