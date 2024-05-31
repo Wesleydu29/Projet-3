@@ -25,26 +25,9 @@ form.addEventListener("submit", function(event) {
                 alert("Identifiant ou mot de passe incorrect, veuillez réessayez")
             }else {
               response.json().then((data) => {
-                localStorage.setItem("token", data.token); //STORE TOKEN
+                localStorage.setItem("token", data.token); 
                 window.location.href = "index.html";
               });
             }
           });
         });
-        
-
-//function afficherMessageErreur() {
-    //const form = document.getElementById('loginForm');
-    //const divErreur = document.createElement("div");
-    //divErreur.classList.add("erreur");
-    //divErreur.innerHTML = "Les indentifiants sont incorrects, veuillez en saisir de nouveaux";
-    //form.appendChild(divErreur)
-    //}
-
-//function afficherMessageErreur() {
-    //const form = document.getElementById('loginForm');
-    //const divErreur = document.createElement("div");
-    //divErreur.classList.add("erreur");
-    //divErreur.innerHTML = "Les indentifiants sont incorrects, veuillez en saisir de nouveaux";
-    //form.appendChild(divErreur)
-    //}
