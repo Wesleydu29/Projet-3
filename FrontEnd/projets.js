@@ -1,10 +1,9 @@
-import { genererBoutonsCategories } from "./categories";
 
 fetch("http://localhost:5678/api/works").then((reponse) => {
     return reponse.json();
 }).then((json) => {
     projets = json
-    genererProjets()
+    genererProjets(projets)
 });
 
 
@@ -12,11 +11,11 @@ fetch("http://localhost:5678/api/works").then((reponse) => {
 projets = []
 
 
-function genererProjets() {
-    const projetsFiltres = 0
+function genererProjets(projetsAAfficher) {
+    document.querySelector(".gallery").innerHTML = "";
     
-    for( let i = 0; i < projets.length; i++) {
-        const projet = projets[i];
+    for( let i = 0; i < projetsAAfficher.length; i++) {
+        const projet = projetsAAfficher[i];
         const baliseFigure = document.createElement("figure");
         const baliseFigcaption = document.createElement("figcaption");
 
@@ -33,29 +32,45 @@ function genererProjets() {
         baliseFigure.appendChild(nomProjet);
         sectionGallery.appendChild(baliseFigure);
     }
-
-    const boutonFiltreTous = document.querySelector(".btn-tous")
-    boutonFiltreTous.addEventListener("click", () => {
-    projetsFiltres = projets.filter(function (projet) {
-        return projet
-    
-})
-})
 }
 
+// CATEGORIES //
 
+fetch("http://localhost:5678/api/categories").then((reponse) => {
+    return reponse.json();
+}).then((json) => {
+    categories = json
+    genererBoutonsCategories(categories)
+});
 
+categories = []
 
-//const boutonFiltreAppartements = document.querySelector(".btn-appartements")
-//boutonFiltreAppartements.addEventListener("click", () => {
-    //const projetsFiltres = projets.filter(function (projet) {
-        //return projet.appartements
-    //})
-//})
+function genererBoutonsCategories() {
 
-//const boutonFiltreHotels = document.querySelector(".btn-hotels")
-//boutonFiltreHotels.addEventListener("click", () => {
-    //const projetsFiltres = projets.filter(function (projet) {
-        //return projet.Hotels
-    //})
-//})
+    const sectionCategories = document.querySelector(".categories");
+    const boutonTous = document.createElement("Button");
+    boutonTous.classList.add("btn-tous");
+    boutonTous.innerText = "Tous";
+    boutonTous.addEventListener("click", () => {
+        genererProjets(projets);
+    });
+
+    sectionCategories.appendChild(boutonTous);
+    
+    for(let i = 0; i < categories.length; i++) {
+        const categorie = categories[i]
+        const boutonsfiltres = document.createElement("button")
+        boutonsfiltres.classList.add(`categorie${categorie.id}`)
+        boutonsfiltres.innerText = categorie.name;
+        boutonsfiltres.addEventListener("click", function() {
+            const projetsFiltres = projets.filter(function (projet) {
+                return projet.category.id === categorie.id;
+            });
+            genererProjets(projetsFiltres);
+        });
+        console.log(categorie)
+        
+
+        sectionCategories.appendChild(boutonsfiltres)
+    }
+}

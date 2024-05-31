@@ -47,6 +47,9 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+html {
+	background-color: #FFFEF8;
+}
 body {
 	max-width: 1140px;
 	margin:auto;
@@ -60,6 +63,10 @@ header {
 }
 section {
 	margin: 50px 0
+}
+footer {
+	height: 40px;
+	background: white;
 }
 
 h1{
@@ -186,3 +193,6 @@ footer nav ul {
 	margin: 2em
 }
 
+form .erreur {
+	border: 1px solid red;
+}
