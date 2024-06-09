@@ -73,4 +73,32 @@ function genererBoutonsCategories() {
 
         sectionCategories.appendChild(boutonsfiltres)
     }
+};
+
+// Ici, la partie click, pour ouvrir et fermer la modal // 
+const modal = document.querySelector(".modal");
+
+const modalBtn = document.querySelector(".btn-modal");
+
+const closeBtn = document.querySelector(".closeBtn")
+
+modalBtn.addEventListener("click", openModal);
+
+closeBtn.addEventListener("click", closeModal);
+
+window.addEventListener("click", clickOutside);
+
+// les functions en lien avec les clicks //
+function openModal() {
+    modal.style.display = "flex"
+}
+
+function closeModal() {
+    modal.style.display = "none"
+}
+
+function clickOutside(event){
+    if(event.target == modal) {
+        modal.style.display = "none"
+    }
 }

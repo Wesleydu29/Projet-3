@@ -193,6 +193,94 @@ footer nav ul {
 	margin: 2em
 }
 
-form .erreur {
-	border: 1px solid red;
+/** Login css **/
+
+div a {
+	color: black;
+}
+
+/** Mode édition  **/
+
+header .mode-edition {
+	display: flex;
+	position: absolute;
+	font-family: "Work Sans";
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	width: 100%;
+	height: 50px;
+	gap: 20px;
+	background-color: black;
+	top: 0;
+	left: 0;
+	margin-bottom: 30 px;
+}
+
+header .edition-logo {
+	display: flex;
+	flex-direction: row;
+	color: #ffffff;
+	font-size: 16px;
+	gap: 12px;
+	cursor: pointer;
+}
+
+.modifier-les-projets {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 30px;
+}
+.btn-modifier {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+.btn-modifier a {
+	text-decoration: none;
+}
+
+/** MODAL **/ 
+
+.modal {
+	display: none;
+	position: fixed;
+	left:0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0,0.5);
+
+}
+
+.modal-content {
+	background-color: #f4f4f4;
+	margin: 20% auto;
+	padding: 20px;
+	width: 50%;
+	height: 50%;
+	border-radius: 10px;
+	animation-name: modalopen;
+	animation-duration: 0.5s;
+}
+.modal .modal-content p {
+	display: flex;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 20px;
+	margin-top: 15px;
+}
+.closeBtn {
+	float: right;
+	font-size: 30px;
+}
+.closeBtn:hover {
+	cursor: pointer;
+}
+
+@keyframes modalopen {
+	from{opacity: 0}
+	to {opacity: 1;}
 }
