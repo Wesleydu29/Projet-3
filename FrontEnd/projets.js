@@ -78,12 +78,15 @@ function genererBoutonsCategories() {
 
 // Ici, la partie click, pour ouvrir et fermer la modal // 
 const modal = document.querySelector(".modal");
+const modal2 = document.querySelector(".modal2");
 
 const modalBtn = document.querySelector(".btn-modal");
+const modal2Btn = document.querySelector(".btn-ajouter-photo");
 
 const closeBtn = document.querySelector(".closeBtn")
 
 modalBtn.addEventListener("click", openModal);
+modal2Btn.addEventListener("click", changeModal)
 
 closeBtn.addEventListener("click", closeModal);
 
@@ -92,6 +95,12 @@ window.addEventListener("click", clickOutside);
 // les functions en lien avec les clicks //
 function openModal() {
     modal.style.display = "flex"
+}
+function changeModal(event) {
+    if(event.target == modal2Btn) {
+        modal2.style.display = "flex"
+        modal.style.display = "none"
+    }
 }
 
 function closeModal() {

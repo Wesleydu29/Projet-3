@@ -243,7 +243,7 @@ header .edition-logo {
 
 /** MODAL **/ 
 
-.modal {
+.modal, .modal2{
 	display: none;
 	position: fixed;
 	left:0;
@@ -255,7 +255,7 @@ header .edition-logo {
 
 }
 
-.modal-content {
+.modal-content, .modal-content2 {
 	display: flex;
 	flex-direction: column;
 	background-color: #f4f4f4;
@@ -267,7 +267,7 @@ header .edition-logo {
 	animation-name: modalopen;
 	animation-duration: 0.5s;
 }
-.modal .modal-content p {
+.modal-content p {
 	display: flex;
 	justify-content: center;
 	font-weight: 700;
@@ -327,4 +327,10 @@ header .edition-logo {
     font-family: 'Syne';
     font-weight: 700;
     color: #1D6154;
+}
+
+/** modal section ajout photo **/ 
+
+.modal-content2 {
+	display: none;
 }
