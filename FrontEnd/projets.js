@@ -4,6 +4,7 @@ fetch("http://localhost:5678/api/works").then((reponse) => {
 }).then((json) => {
     projets = json
     genererProjets(projets)
+    genererProjetsModal(projets)
 });
 
 
@@ -102,3 +103,33 @@ function clickOutside(event){
         modal.style.display = "none"
     }
 }
+
+// affichage des projets dans la modal // 
+
+function genererProjetsModal(projetsAAfficherModal) {
+    document.querySelector(".gallery-modal").innerHTML = "";
+    
+    for( let i = 0; i < projetsAAfficherModal.length; i++) {
+        const projet = projetsAAfficherModal[i];
+        const baliseFigure = document.createElement("figure");
+
+        const imageProjet = document.createElement("img");
+        imageProjet.src = projet.imageUrl;
+        const categorieProjet = document.createElement("p");
+        categorieProjet.innerText = projet.category
+    
+        const galleryModal = document.querySelector(".gallery-modal")
+    
+        baliseFigure.appendChild(imageProjet);
+        galleryModal.appendChild(baliseFigure);
+    }
+}
+
+const footerModal = document.querySelector(".footer-modal");
+
+const btnAjouterPhoto = document.createElement("button");
+btnAjouterPhoto.classList.add("btn-ajouter-photo");
+btnAjouterPhoto.innerText = "Ajouter une photo"
+
+footerModal.appendChild(btnAjouterPhoto)
+

@@ -256,11 +256,13 @@ header .edition-logo {
 }
 
 .modal-content {
+	display: flex;
+	flex-direction: column;
 	background-color: #f4f4f4;
 	margin: 20% auto;
 	padding: 20px;
-	width: 50%;
-	height: 50%;
+	width: 40%;
+	height: 70%;
 	border-radius: 10px;
 	animation-name: modalopen;
 	animation-duration: 0.5s;
@@ -283,4 +285,46 @@ header .edition-logo {
 @keyframes modalopen {
 	from{opacity: 0}
 	to {opacity: 1;}
+}
+
+.modal-content .gallery-modal {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 420px;
+	flex-wrap: wrap;
+	margin-top: 40px;
+	gap: 10px;
+}
+.gallery-modal img {
+	width: 90px;
+	height: 102.57px;
+}
+
+.footer-modal {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 420px;
+	height: 20%;
+	margin-top: 40px;
+	border-top: 1px solid grey;
+}
+
+.footer-modal button {
+	margin-top: 30px;
+}
+.footer-modal button:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+
+}
+.footer-modal .btn-ajouter-photo {
+	border: 0.5px solid #1D6154;
+    border-radius: 60px;
+    height: 37px;
+	width: 150px;
+    font-family: 'Syne';
+    font-weight: 700;
+    color: #1D6154;
 }
