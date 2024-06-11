@@ -76,6 +76,15 @@ function genererBoutonsCategories() {
     }
 };
 
+const footerModal = document.querySelector(".footer-modal");
+
+const btnAjouterPhoto = document.createElement("button");
+btnAjouterPhoto.classList.add("btn-ajouter-photo");
+btnAjouterPhoto.innerText = "Ajouter une photo"
+
+footerModal.appendChild(btnAjouterPhoto)
+
+
 // Ici, la partie click, pour ouvrir et fermer la modal // 
 const modal = document.querySelector(".modal");
 const modal2 = document.querySelector(".modal2");
@@ -83,14 +92,17 @@ const modal2 = document.querySelector(".modal2");
 const modalBtn = document.querySelector(".btn-modal");
 const modal2Btn = document.querySelector(".btn-ajouter-photo");
 
-const closeBtn = document.querySelector(".closeBtn")
+const closeBtnModal1 = document.querySelector(".modal .closeBtn")
+const closeBtnModal2 = document.querySelector(".modal2 .closeBtn")
 
 modalBtn.addEventListener("click", openModal);
 modal2Btn.addEventListener("click", changeModal)
 
-closeBtn.addEventListener("click", closeModal);
+closeBtnModal1.addEventListener("click", closeModal);
+closeBtnModal2.addEventListener("click", closeModal);
 
-window.addEventListener("click", clickOutside);
+modal.addEventListener("click", clickOutside);
+modal2.addEventListener("click", clickOutside);
 
 // les functions en lien avec les clicks //
 function openModal() {
@@ -105,11 +117,14 @@ function changeModal(event) {
 
 function closeModal() {
     modal.style.display = "none"
+    modal2.style.display = "none"
 }
 
 function clickOutside(event){
-    if(event.target == modal) {
+    if(event.target == modal ) {
         modal.style.display = "none"
+    }else if (event.target == modal2) {
+        modal2.style.display = "none"
     }
 }
 
@@ -128,17 +143,12 @@ function genererProjetsModal(projetsAAfficherModal) {
         categorieProjet.innerText = projet.category
     
         const galleryModal = document.querySelector(".gallery-modal")
+
+        const iconPoubelle = document.createElement("i");
+        iconPoubelle.classList.add("fa-solid","fa-trash-can");
     
         baliseFigure.appendChild(imageProjet);
+        baliseFigure.appendChild(iconPoubelle);
         galleryModal.appendChild(baliseFigure);
     }
 }
-
-const footerModal = document.querySelector(".footer-modal");
-
-const btnAjouterPhoto = document.createElement("button");
-btnAjouterPhoto.classList.add("btn-ajouter-photo");
-btnAjouterPhoto.innerText = "Ajouter une photo"
-
-footerModal.appendChild(btnAjouterPhoto)
-
