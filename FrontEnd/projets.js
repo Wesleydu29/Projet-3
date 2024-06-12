@@ -84,6 +84,13 @@ btnAjouterPhoto.innerText = "Ajouter une photo"
 
 footerModal.appendChild(btnAjouterPhoto)
 
+// création de la flèche de retour //
+const headerModal = document.querySelector(".header-modal");
+
+const btnReturn = document.createElement("i");
+btnReturn.classList.add("fa-solid", "fa-arrow-left");
+
+headerModal.appendChild(btnReturn)
 
 // Ici, la partie click, pour ouvrir et fermer la modal // 
 const modal = document.querySelector(".modal");
@@ -92,17 +99,32 @@ const modal2 = document.querySelector(".modal2");
 const modalBtn = document.querySelector(".btn-modal");
 const modal2Btn = document.querySelector(".btn-ajouter-photo");
 
-const closeBtnModal1 = document.querySelector(".modal .closeBtn")
-const closeBtnModal2 = document.querySelector(".modal2 .closeBtn")
+const closeBtnModal1 = document.querySelector(".modal .closeBtn");
+const closeBtnModal2 = document.querySelector(".modal2 .closeBtn");
 
+const btnReturnModal = document.querySelector(".modal2 .fa-arrow-left");
+
+// ouvrir les modals //
 modalBtn.addEventListener("click", openModal);
-modal2Btn.addEventListener("click", changeModal)
+modal2Btn.addEventListener("click", changeModal);
 
+// fermer les modals
 closeBtnModal1.addEventListener("click", closeModal);
 closeBtnModal2.addEventListener("click", closeModal);
 
+btnReturnModal.addEventListener("click", returnModal);
+
 modal.addEventListener("click", clickOutside);
 modal2.addEventListener("click", clickOutside);
+
+// Ajouter un nouveau projet //
+
+const AjouterPhoto = document.querySelector(".ajout-photo");
+
+const baliseImg = document.createElement("img");
+baliseImg.classList.add("fa-regular","fa-image");
+
+AjouterPhoto.appendChild(baliseImg);
 
 // les functions en lien avec les clicks //
 function openModal() {
@@ -112,6 +134,13 @@ function changeModal(event) {
     if(event.target == modal2Btn) {
         modal2.style.display = "flex"
         modal.style.display = "none"
+    }
+}
+
+function returnModal(event) {
+    if(event.target == btnReturnModal) {
+        modal2.style.display = "none"
+        modal.style.display = "flex"
     }
 }
 
@@ -136,6 +165,7 @@ function genererProjetsModal(projetsAAfficherModal) {
     for( let i = 0; i < projetsAAfficherModal.length; i++) {
         const projet = projetsAAfficherModal[i];
         const baliseFigure = document.createElement("figure");
+        baliseFigure.classList.add("containerBin");
 
         const imageProjet = document.createElement("img");
         imageProjet.src = projet.imageUrl;
@@ -145,7 +175,7 @@ function genererProjetsModal(projetsAAfficherModal) {
         const galleryModal = document.querySelector(".gallery-modal")
 
         const iconPoubelle = document.createElement("i");
-        iconPoubelle.classList.add("fa-solid","fa-trash-can");
+        iconPoubelle.classList.add("fa-solid","fa-trash-can", "iconBin");
     
         baliseFigure.appendChild(imageProjet);
         baliseFigure.appendChild(iconPoubelle);

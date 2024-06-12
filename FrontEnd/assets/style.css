@@ -295,15 +295,25 @@ header .edition-logo {
 }
 .gallery-modal i {
 	display: flex;
-	width: 15%;
-	height: 20px;
+	align-items: center;
+}
+.containerBin {
+	display: flex;
+	position: relative;
+	display: inline-block;
+}
+.iconBin {
+	position: absolute;
 	justify-content: center;
-	align-items: center ;
-	cursor: pointer;
-	color: #ffffff;
+	width: 15px;
+	height: 20px;
+	top: 10px;
+	right: 10px;
 	background-color: black;
+	color: white;
 	border-radius: 5px;
-	border: 2px solid purple;
+	cursor: pointer;
+	
 }
 .gallery-modal img {
 	width: 90px;
@@ -339,3 +349,8 @@ header .edition-logo {
 }
 
 /** modal section ajout photo **/ 
+
+.header-modal .fa-arrow-left {
+	font-size: 20px;
+	cursor: pointer;
+}
