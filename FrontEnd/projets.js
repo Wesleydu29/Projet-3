@@ -1,10 +1,11 @@
-
 fetch("http://localhost:5678/api/works").then((reponse) => {
     return reponse.json();
 }).then((json) => {
     projets = json
     genererProjets(projets)
     genererProjetsModal(projets)
+    afficherModeEdition()
+    ajouterCategorieForm(categories)
 });
 
 
@@ -69,7 +70,6 @@ function genererBoutonsCategories() {
             });
             genererProjets(projetsFiltres);
         });
-        console.log(categorie)
         
 
         sectionCategories.appendChild(boutonsfiltres)
@@ -83,6 +83,15 @@ btnAjouterPhoto.classList.add("btn-ajouter-photo");
 btnAjouterPhoto.innerText = "Ajouter une photo"
 
 footerModal.appendChild(btnAjouterPhoto)
+
+const footerModal2 = document.querySelector(".footer-modal2");
+
+const btnValiderForm = document.createElement("button");
+btnValiderForm.classList.add("btnValider");
+btnValiderForm.classList.add("valider")
+btnValiderForm.innerText = "Valider"
+
+footerModal2.appendChild(btnValiderForm)
 
 // création de la flèche de retour //
 const headerModal = document.querySelector(".header-modal");
@@ -117,16 +126,77 @@ btnReturnModal.addEventListener("click", returnModal);
 modal.addEventListener("click", clickOutside);
 modal2.addEventListener("click", clickOutside);
 
+document.addEventListener("click", deleteBtn)
+
 // Ajouter un nouveau projet //
 
-const AjouterPhoto = document.querySelector(".ajout-photo");
+function EnvoyerFormulaire(event) {
+    if(event.target == document.querySelector(".valider")) {
+        event.preventDefault();
+        ajouterProjet();
+    }
+}
 
-const baliseImg = document.createElement("img");
-baliseImg.classList.add("fa-regular","fa-image");
+function ValiderFormulaire() {
+    if(image == undefined) {
+        alert("erreur : ajoutez une photo de votre projet");
+    }
+    if (title.trim().length == "") {
+        alert("erreur : Ajoutez un titre à votre projet");
+    }
+    if (categorie == "") {
+        alert("erreur : choisissez une catégorie");
+    }else {
+        return true
+    }
+}
 
-AjouterPhoto.appendChild(baliseImg);
+function ajouterProjet() {
+    const token = localStorage.getItem("token");
+}
 
 // les functions en lien avec les clicks //
+
+function deleteBtn(event) {
+    event.preventDefault();
+    if(event.target.matches(".fa-trash-can")) {
+        deleteProjet(event.target.id);
+    }
+}
+
+function deleteProjet(i) {
+    let token = localStorage.getItem("token")
+    fetch("http://localhost:5678/api/works" + i, {
+        method: "DELETE",
+        headers: {
+            authorization: `Bearer ${token}`,
+        }
+    }).then((response) => {
+        if(response.ok) {
+            alert("Le projet a bien été supprimé")
+            projets = projets.filter((projet) => projet.id != i)
+            projetsAAfficher(projets);
+            projetsAAfficherModal(projets);
+        }else {
+            alert("Erreur lors de la suppression")
+            closeModal
+        }
+    });
+}
+
+//ajout des catégories à la balise select 
+function ajouterCategorieForm() {
+    const baliseSelect = document.getElementById("selectCategory").innerHTML="";
+
+    for(let i = 0; i < categories.length; i++) {
+        const choixOption = document.createElement("option");
+        choixOption.innerText = categorie.name;
+    }
+
+    baliseSelect.appendChild(choixOption)
+}
+
+
 function openModal() {
     modal.style.display = "flex"
 }
@@ -157,6 +227,15 @@ function clickOutside(event){
     }
 }
 
+function afficherModeEdition() {
+    if(localStorage.getItem("token")?.length == 143) {
+        document.querySelector(".categories").style.display = "none"
+        document.getElementById("btn-login").innerText = "logout"
+        document.querySelector(".mode-edition").style.display = "flex"
+        document.querySelector(".btn-modifier").style.display = "flex"
+    }
+}
+
 // affichage des projets dans la modal // 
 
 function genererProjetsModal(projetsAAfficherModal) {
@@ -182,3 +261,4 @@ function genererProjetsModal(projetsAAfficherModal) {
         galleryModal.appendChild(baliseFigure);
     }
 }
+

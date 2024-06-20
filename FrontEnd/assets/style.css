@@ -202,7 +202,7 @@ div a {
 /** Mode édition  **/
 
 header .mode-edition {
-	display: flex;
+	display: none;
 	position: absolute;
 	font-family: "Work Sans";
 	align-items: center;
@@ -233,7 +233,7 @@ header .edition-logo {
 	gap: 30px;
 }
 .btn-modifier {
-	display: flex;
+	display: none;
 	flex-direction: row;
 	gap: 10px;
 }
@@ -353,4 +353,60 @@ header .edition-logo {
 .header-modal .fa-arrow-left {
 	font-size: 20px;
 	cursor: pointer;
+}
+.modal-content2 .ajout-photo {
+	display: flex;
+	flex-direction: column;
+}
+#labelPhoto {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+}
+#labelPhoto i {
+	font-size: 50px;
+	color: gray;
+	opacity: 0.5;
+}
+#labelPhoto p {
+	font-size: 15px;
+	color: gray;
+	opacity: 0.5;
+}
+#picturePreview {
+	display: flex;
+	justify-content: center;
+	background-color: #E8F1F6;
+	width: 100%;
+	height: 200px;
+}
+#picturePreview img {
+	height: 100%;
+	width: 50%;
+	object-fit: cover;
+}
+.footer-modal2 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+	border-top: 1px solid gray;
+	margin-top: 20px;
+}
+.footer-modal2 button {
+	margin-top: 30px;
+}
+.footer-modal2 button:hover {
+	background-color: #1D6154;
+	color: #FFFEF8;
+
+}
+.footer-modal2 .btnValider {
+	border: 0.5px solid #1D6154;
+    border-radius: 60px;
+    height: 37px;
+	width: 150px;
+    font-family: 'Syne';
+    font-weight: 700;
+    color: #1D6154;
 }
