@@ -126,7 +126,7 @@ btnReturnModal.addEventListener("click", returnModal);
 modal.addEventListener("click", clickOutside);
 modal2.addEventListener("click", clickOutside);
 
-document.addEventListener("click", deleteBtn)
+//document.addEventListener("click", deleteBtn)
 
 // Ajouter un nouveau projet //
 
@@ -166,7 +166,7 @@ function deleteBtn(event) {
 
 function deleteProjet(i) {
     let token = localStorage.getItem("token")
-    fetch("http://localhost:5678/api/works" + i, {
+    fetch("http://localhost:5678/api/works/" + i, {
         method: "DELETE",
         headers: {
             authorization: `Bearer ${token}`,
@@ -187,15 +187,16 @@ function deleteProjet(i) {
 //ajout des catégories à la balise select 
 function ajouterCategorieForm() {
     const baliseSelect = document.getElementById("selectCategory").innerHTML="";
-
+    
     for(let i = 0; i < categories.length; i++) {
+        const categorie = categories[i]
         const choixOption = document.createElement("option");
         choixOption.innerText = categorie.name;
+
+        baliseSelect.appendChild(choixOption)
     }
 
-    baliseSelect.appendChild(choixOption)
 }
-
 
 function openModal() {
     modal.style.display = "flex"
@@ -255,6 +256,9 @@ function genererProjetsModal(projetsAAfficherModal) {
 
         const iconPoubelle = document.createElement("i");
         iconPoubelle.classList.add("fa-solid","fa-trash-can", "iconBin");
+        iconPoubelle.addEventListener("click", () => {
+            deleteProjet(projet.id)
+        });
     
         baliseFigure.appendChild(imageProjet);
         baliseFigure.appendChild(iconPoubelle);
