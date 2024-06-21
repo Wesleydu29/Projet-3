@@ -130,6 +130,10 @@ modal2.addEventListener("click", clickOutside);
 
 // Ajouter un nouveau projet //
 
+const uploadPhoto = document.getElementById("photo")
+
+uploadPhoto.addEventListener("click", previewPhoto)
+
 function EnvoyerFormulaire(event) {
     if(event.target == document.querySelector(".valider")) {
         event.preventDefault();
@@ -150,6 +154,22 @@ function ValiderFormulaire() {
         return true
     }
 }
+function previewPhoto() {
+    document.getElementById("photo").addEventListener("change", function(event) {
+        const file = event.target.files[0];
+        if(file){
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgElement = document.getElementById("picturePreviewImg");
+                imgElement.src = e.target.result;
+                imgElement.style.display = "block";
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+}
+
+
 
 function ajouterProjet() {
     const token = localStorage.getItem("token");
@@ -175,11 +195,13 @@ function deleteProjet(i) {
         if(response.ok) {
             alert("Le projet a bien été supprimé")
             projets = projets.filter((projet) => projet.id != i)
-            projetsAAfficher(projets);
-            projetsAAfficherModal(projets);
+            genererProjets(projets);
+            genererProjetsModal(projets);
+
+            closeModal()
         }else {
             alert("Erreur lors de la suppression")
-            closeModal
+            
         }
     });
 }

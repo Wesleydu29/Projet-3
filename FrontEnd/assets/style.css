@@ -381,9 +381,16 @@ header .edition-logo {
 	height: 200px;
 }
 #picturePreview img {
+	display: "none";
 	height: 100%;
 	width: 50%;
 	object-fit: cover;
+}
+.modal2 form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 10px;
 }
 .footer-modal2 {
 	display: flex;
