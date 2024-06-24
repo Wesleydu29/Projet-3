@@ -111,7 +111,7 @@ function ajouterProjet() {
     let categoryId = select.options[select.selectedIndex].value;
     let image = document.getElementById("photo").files[0];
 
-    if (ValiderFormulaire(image, title, categoryId)) {
+    if (validerFormulaire(image, title, categoryId)) {
         const formData = new FormData();
         formData.append("image", image);
         formData.append("title", title);
@@ -155,7 +155,7 @@ function ajouterData(data, categoryId) {
     projets.push(nouveauProjet);
 }
 
-function ValiderFormulaire(image, title, categoryId) {
+function validerFormulaire(image, title, categoryId) {
     if (!image) {
         alert("Erreur : ajoutez une photo de votre projet");
         return false;
@@ -170,6 +170,12 @@ function ValiderFormulaire(image, title, categoryId) {
     }
     return true;
 }
+
+//function changeColorBtnValider() {
+    //if(validerFormulaire.ok){
+        //document.querySelector(".valider").style.backgroundColor = "#1D6164";
+    //}
+//}
 
 function previewPhoto() {
     const file = document.getElementById("photo").files[0];
