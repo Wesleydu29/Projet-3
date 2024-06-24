@@ -377,7 +377,7 @@ header .edition-logo {
 	display: flex;
 	justify-content: center;
 	background-color: #E8F1F6;
-	width: 100%;
+	width: 420px;
 	height: 200px;
 }
 #picturePreview img {
@@ -403,14 +403,11 @@ header .edition-logo {
 .footer-modal2 button {
 	margin-top: 30px;
 }
-.footer-modal2 button:hover {
-	background-color: #1D6154;
-	color: #FFFEF8;
 
-}
 .footer-modal2 .btnValider {
 	border: 0.5px solid #1D6154;
     border-radius: 60px;
+	background-color: gray;
     height: 37px;
 	width: 150px;
     font-family: 'Syne';
