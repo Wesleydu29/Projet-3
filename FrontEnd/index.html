@@ -42,26 +42,26 @@
 </div>
 <div class="modal2">
     <div class="modal-content2">
-        <div class="header-modal">
+        <div class="header-modal2">
             <div class="closeBtn">&times;</div>
+			<i class="fa-solid fa-arrow-left"></i>
         </div>
-            
         <h3>Ajout photo</h3>
         <div class="ajout-photo">
-            <div id="labelPhoto">
-                
-            </div>
-            <div id="picturePreview">
-				<i class="fa-regular fa-image"></i>
-                <p>jpg, png : 4mo max</p>
-                <img src="#" id="picturePreviewImg">
-            </div>
-            <form class="form-modal">
-                <input type="file" class="photo" name="photo" id="photo" accept="image/png, image/jpeg" required>
-                <label for="title">Titre</label>
-                <input type="text" id="title" name="title" required>
-                <label for="selectCategory">Catégorie</label>
-                <select id="selectCategory" name="selectCategory"></select>
+			<form class="form-modal">
+				<div class="picturePreview">
+					<i class="fa-regular fa-image"></i>
+					<label for="file">+ Ajouter photo</label>
+					<input type="file" class="photo" name="photo" id="file" accept="image/png, image/jpeg" required>
+					<p>jpg, png : 4mo max</p>
+					<img src="#" id="picturePreviewImg" alt="aperçu de l'image">
+				</div>
+				<div class="champs-form">
+					<label for="title">Titre</label>
+					<input type="text" id="title" name="title" required>
+					<label for="selectCategory">Catégorie</label>
+					<select id="selectCategory" name="selectCategory"></select>
+				</div>
             </form>
         </div>
         <div class="footer-modal2"></div>

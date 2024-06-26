@@ -350,8 +350,26 @@ header .edition-logo {
 
 /** modal section ajout photo **/ 
 
-.header-modal .fa-arrow-left {
+.header-modal2 {
+	display: flex;
+	align-items: center;
+	height: 40px;
+	flex-direction: row;
+	justify-content: space-between;
+	position: relative;
+}
+.header-modal2 .fa-arrow-left {
+	position: absolute;
+	top: 10px;
+	left: 10px;
 	font-size: 20px;
+	cursor: pointer;
+}
+.header-modal2 .closeBtn {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	font-size: 30px;
 	cursor: pointer;
 }
 .modal-content2 .ajout-photo {
@@ -362,23 +380,26 @@ header .edition-logo {
 	display: flex;
 	font-size: 30px;
 	justify-content: center;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 #labelPhoto {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
 }
-#picturePreview i {
+.picturePreview i {
+	display: flex;
 	font-size: 50px;
 	color: gray;
 	opacity: 0.5;
 }
-#picturePreview p {
+.picturePreview p {
 	font-size: 15px;
 	color: gray;
 	opacity: 0.5;
 }
-#picturePreview {
+.picturePreview {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -386,25 +407,43 @@ header .edition-logo {
 	background-color: #E8F1F6;
 	width: 420px;
 	height: 200px;
+	gap: 10px;
 }
-#picturePreview img {
+.picturePreview label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	width: 173px;
+	height: 36px;
+	background-color: #CBD6DC;
+	color: #306685;
+	border-radius: 50px;
+	padding: 5px 10px;
+	cursor: pointer;
+}
+.picturePreview input {
+	display: none;
+}
+.picturePreview img {
 	display: none;
 	height: 100%;
 	width: 50%;
 	object-fit: cover;
 }
-#photo {
-	border-radius: 50px;
-	width: 173px;
-	height: 36px;
+.champs-form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-top: 15px;
 }
 #title {
 	border: none;
-	height: 25px;
+	height: 30px;
 }
 #selectCategory {
 	border: none;
-	height: 25px;
+	height: 30px;
 }
 .modal2 form {
 	display: flex;

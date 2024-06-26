@@ -72,13 +72,18 @@ const footerModal2 = document.querySelector(".footer-modal2");
 const btnValiderForm = document.createElement("button");
 btnValiderForm.classList.add("btnValider", "valider");
 btnValiderForm.innerText = "Valider";
-btnValiderForm.addEventListener("click", envoyerRequeteForm);
-footerModal2.appendChild(btnValiderForm);
 
-const headerModal = document.querySelector(".header-modal");
-const btnReturn = document.createElement("i");
-btnReturn.classList.add("fa-solid", "fa-arrow-left");
-headerModal.appendChild(btnReturn);
+// ici on vient rétablir le picturePreview par défaut à l'envoi du formulaire
+btnValiderForm.addEventListener("click", envoyerRequeteForm);
+btnValiderForm.addEventListener("click", (event) => {
+    event.preventDefault
+    document.querySelector(".form-modal").reset();
+    document.getElementById("picturePreviewImg").style.display = "none";
+    labelFile.style.display = "flex";
+    iconFile.style.display = "flex";
+    paragrapheFile.style.display = "flex";
+})
+footerModal2.appendChild(btnValiderForm);
 
 const modal = document.querySelector(".modal");
 const modal2 = document.querySelector(".modal2");
@@ -96,7 +101,17 @@ btnReturnModal.addEventListener("click", returnModal);
 modal.addEventListener("click", clickOutside);
 modal2.addEventListener("click", clickOutside);
 
-document.getElementById("photo").addEventListener("change", previewPhoto);
+// à l'ajout de l'image je viens cacher les éléments du preview 
+const labelFile = document.querySelector(".picturePreview label");
+const iconFile = document.querySelector(".picturePreview .fa-image");
+const paragrapheFile = document.querySelector(".picturePreview p");
+document.getElementById("file").addEventListener("change", previewPhoto);
+document.getElementById("file").addEventListener("change", () => {
+    labelFile.style.display = "none";
+    iconFile.style.display = "none";
+    paragrapheFile.style.display = "none";
+});
+
 
 function envoyerRequeteForm(event) {
     event.preventDefault();
@@ -109,7 +124,7 @@ function ajouterProjet() {
 
     let title = document.getElementById("title").value;
     let categoryId = select.options[select.selectedIndex].value;
-    let image = document.getElementById("photo").files[0];
+    let image = document.getElementById("file").files[0];
 
     if (validerFormulaire(image, title, categoryId)) {
         const formData = new FormData();
@@ -125,7 +140,6 @@ function ajouterProjet() {
             body: formData,
         })
         .then((response) => {
-            console.log("réponse de la requête post :", response);
             if (response.ok) {
                 return response.json();
             } else {
@@ -178,7 +192,7 @@ function validerFormulaire(image, title, categoryId) {
 //}
 
 function previewPhoto() {
-    const file = document.getElementById("photo").files[0];
+    const file = document.getElementById("file").files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = (e) => {
