@@ -135,7 +135,7 @@ function ajouterProjet() {
         .then((data) => {
             ajouterData(data, categoryId);
             genererProjets(projets);
-            closeModal();
+            genererProjetsModal(projets)
             alert(`Le nouveau projet ${title} a bien été ajouté`);
         })
         .catch((error) => console.error("Erreur:", error));
@@ -172,7 +172,7 @@ function validerFormulaire(image, title, categoryId) {
 }
 
 //function changeColorBtnValider() {
-    //if(validerFormulaire.ok){
+    //if(validerFormulaire().ok){
         //document.querySelector(".valider").style.backgroundColor = "#1D6164";
     //}
 //}
@@ -266,6 +266,11 @@ function afficherModeEdition() {
     if (localStorage.getItem("token")?.length === 143) {
         document.querySelector(".categories").style.display = "none";
         document.getElementById("btn-login").innerText = "logout";
+        document.getElementById("btn-login").addEventListener("click", function(e) {
+            e.preventDefault();
+            localStorage.removeItem("token");
+            location.reload();
+        })
         document.querySelector(".mode-edition").style.display = "flex";
         document.querySelector(".btn-modifier").style.display = "flex";
     }

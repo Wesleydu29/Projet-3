@@ -358,33 +358,53 @@ header .edition-logo {
 	display: flex;
 	flex-direction: column;
 }
+.modal-content2 h3 {
+	display: flex;
+	font-size: 30px;
+	justify-content: center;
+}
 #labelPhoto {
 	display: flex;
 	flex-direction: column;
 	margin: auto;
 }
-#labelPhoto i {
+#picturePreview i {
 	font-size: 50px;
 	color: gray;
 	opacity: 0.5;
 }
-#labelPhoto p {
+#picturePreview p {
 	font-size: 15px;
 	color: gray;
 	opacity: 0.5;
 }
 #picturePreview {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 	background-color: #E8F1F6;
 	width: 420px;
 	height: 200px;
 }
 #picturePreview img {
-	display: "none";
+	display: none;
 	height: 100%;
 	width: 50%;
 	object-fit: cover;
+}
+#photo {
+	border-radius: 50px;
+	width: 173px;
+	height: 36px;
+}
+#title {
+	border: none;
+	height: 25px;
+}
+#selectCategory {
+	border: none;
+	height: 25px;
 }
 .modal2 form {
 	display: flex;
