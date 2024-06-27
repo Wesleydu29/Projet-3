@@ -82,6 +82,7 @@ btnValiderForm.addEventListener("click", (event) => {
     labelFile.style.display = "flex";
     iconFile.style.display = "flex";
     paragrapheFile.style.display = "flex";
+    champCategory.value =""
 })
 footerModal2.appendChild(btnValiderForm);
 
@@ -92,9 +93,13 @@ const modal2Btn = document.querySelector(".btn-ajouter-photo");
 const closeBtnModal1 = document.querySelector(".modal .closeBtn");
 const closeBtnModal2 = document.querySelector(".modal2 .closeBtn");
 const btnReturnModal = document.querySelector(".modal2 .fa-arrow-left");
+const champCategory = document.getElementById("selectCategory");
 
 modalBtn.addEventListener("click", openModal);
 modal2Btn.addEventListener("click", changeModal);
+modal2Btn.addEventListener("click", () => {
+    champCategory.value = ""
+})
 closeBtnModal1.addEventListener("click", closeModal);
 closeBtnModal2.addEventListener("click", closeModal);
 btnReturnModal.addEventListener("click", returnModal);
@@ -185,9 +190,17 @@ function validerFormulaire(image, title, categoryId) {
     return true;
 }
 
+//document.querySelector(".form-modal").addEventListener("input", changeColorBtnValider)
+
 //function changeColorBtnValider() {
-    //if(validerFormulaire().ok){
-        //document.querySelector(".valider").style.backgroundColor = "#1D6164";
+    //const select = document.getElementById("selectCategory");
+
+    //let title = document.getElementById("title").value;
+    //let categoryId = select.options[select.selectedIndex].value;
+    //let image = document.getElementById("file").files[0];
+
+    //if(validerFormulaire(image, title, categoryId).ok){
+        //document.querySelector(".valider").style.backgroundColor = "#1D6164"
     //}
 //}
 
