@@ -117,7 +117,10 @@ document.getElementById("file").addEventListener("change", () => {
     paragrapheFile.style.display = "none";
 });
 
-
+//const baliseSelect = document.getElementById("selectCategory");
+//baliseSelect.addEventListener("change", ()=>{
+    //document.querySelector(".valider").style.backgroundColor = "#1D6164"
+//})
 function envoyerRequeteForm(event) {
     event.preventDefault();
     ajouterProjet();
