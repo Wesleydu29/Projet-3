@@ -1,3 +1,4 @@
+
 let projets = [];
 let categories = [];
 
@@ -75,15 +76,7 @@ btnValiderForm.innerText = "Valider";
 
 // ici on vient rétablir le picturePreview par défaut à l'envoi du formulaire
 btnValiderForm.addEventListener("click", envoyerRequeteForm);
-btnValiderForm.addEventListener("click", (event) => {
-    event.preventDefault
-    document.querySelector(".form-modal").reset();
-    document.getElementById("picturePreviewImg").style.display = "none";
-    labelFile.style.display = "flex";
-    iconFile.style.display = "flex";
-    paragrapheFile.style.display = "flex";
-    champCategory.value =""
-})
+
 footerModal2.appendChild(btnValiderForm);
 
 const modal = document.querySelector(".modal");
@@ -100,6 +93,7 @@ modal2Btn.addEventListener("click", changeModal);
 modal2Btn.addEventListener("click", () => {
     champCategory.value = ""
 })
+
 closeBtnModal1.addEventListener("click", closeModal);
 closeBtnModal2.addEventListener("click", closeModal);
 btnReturnModal.addEventListener("click", returnModal);
@@ -117,10 +111,7 @@ document.getElementById("file").addEventListener("change", () => {
     paragrapheFile.style.display = "none";
 });
 
-//const baliseSelect = document.getElementById("selectCategory");
-//baliseSelect.addEventListener("change", ()=>{
-    //document.querySelector(".valider").style.backgroundColor = "#1D6164"
-//})
+
 function envoyerRequeteForm(event) {
     event.preventDefault();
     ajouterProjet();
@@ -159,9 +150,23 @@ function ajouterProjet() {
             genererProjets(projets);
             genererProjetsModal(projets)
             alert(`Le nouveau projet ${title} a bien été ajouté`);
+            resetForm();
+
         })
         .catch((error) => console.error("Erreur:", error));
     }
+}
+
+function changeColorBtnValider() {
+    document.querySelector(".btnValider").style.backgroundColor = "#1D6164"
+}
+function resetForm() {
+    document.querySelector(".form-modal").reset();
+    document.getElementById("picturePreviewImg").style.display = "none";
+    labelFile.style.display = "flex";
+    iconFile.style.display = "flex";
+    paragrapheFile.style.display = "flex";
+    champCategory.value = ""
 }
 
 function ajouterData(data, categoryId) {
@@ -193,9 +198,6 @@ function validerFormulaire(image, title, categoryId) {
     return true;
 }
 
-//document.querySelector(".form-modal").addEventListener("input", changeColorBtnValider)
-
-//function changeColorBtnValider() {
     //const select = document.getElementById("selectCategory");
 
     //let title = document.getElementById("title").value;
@@ -253,12 +255,19 @@ function ajouterCategorieForm(categories) {
     const selectCategory = document.getElementById("selectCategory");
     selectCategory.innerHTML = "";
     
+    const optionVide = document.createElement("option");
+    optionVide.value ="",
+    optionVide.disabled =true;
+    optionVide.selected = true;
+    optionVide.hidden = true;
+    selectCategory.appendChild(optionVide);
+
     categories.forEach(categorie => {
         const option = document.createElement("option");
         option.value = categorie.id;
         option.innerText = categorie.name;
-        selectCategory.appendChild(option);
-    });
+        selectCategory.appendChild(option)
+    })
 }
 
 function openModal() {

@@ -266,11 +266,10 @@ header .edition-logo {
 	animation-name: modalopen;
 	animation-duration: 0.5s;
 }
-.modal-content p, .modal-content2 p {
+.modal-content h3 {
 	display: flex;
+	font-size: 26px;
 	justify-content: center;
-	font-weight: 700;
-	font-size: 20px;
 }
 .closeBtn {
 	position: absolute;
@@ -383,9 +382,8 @@ header .edition-logo {
 }
 .modal-content2 h3 {
 	display: flex;
-	font-size: 30px;
+	font-size: 26px;
 	justify-content: center;
-	margin-top: 25px;
 	margin-bottom: 25px;
 }
 #labelPhoto {
