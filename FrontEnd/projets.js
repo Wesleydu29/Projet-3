@@ -198,17 +198,6 @@ function validerFormulaire(image, title, categoryId) {
     return true;
 }
 
-    //const select = document.getElementById("selectCategory");
-
-    //let title = document.getElementById("title").value;
-    //let categoryId = select.options[select.selectedIndex].value;
-    //let image = document.getElementById("file").files[0];
-
-    //if(validerFormulaire(image, title, categoryId).ok){
-        //document.querySelector(".valider").style.backgroundColor = "#1D6164"
-    //}
-//}
-
 function previewPhoto() {
     const file = document.getElementById("file").files[0];
     if (file) {
@@ -243,7 +232,6 @@ function deleteProjet(id) {
             genererProjets(projets);
             genererProjetsModal(projets);
             alert("Le projet a bien été supprimé");
-            closeModal();
         } else {
             alert("Erreur lors de la suppression");
         }
